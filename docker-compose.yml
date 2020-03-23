@@ -1,0 +1,18 @@
+version: "2.4"
+
+################################################################################
+
+services:
+  darknet_ros:
+    build: ./
+    image: darknet_ros
+    container_name: darknet_ros
+    runtime: nvidia
+    tty: true
+    environment:
+        - DISPLAY=${DISPLAY}
+        - QT_X11_NO_MITSHM=1
+
+    volumes:
+        - /tmp/.X11-unix:/tmp/.X11-unix
+        - ./catkin_ws:/root/catkin_ws
