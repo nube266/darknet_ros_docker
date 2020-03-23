@@ -43,8 +43,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
-# Install library
+# Install other packages/library
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    python-catkin-tools \
     libboost-dev \
     ros-kinetic-vision-opencv \
     python-opencv \
