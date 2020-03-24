@@ -31,10 +31,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 RUN rosdep init && rosdep update
 
-# Download_weights
-WORKDIR  /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights/
-RUN wget http://pjreddie.com/media/files/yolov3.weights
-
 # Install common optional packages/tools.
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
@@ -42,6 +38,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     vim \
     wget \
     && rm -rf /var/lib/apt/lists/*
+
+# Download_weights
+WORKDIR  /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights/
+RUN wget http://pjreddie.com/media/files/yolov3.weights
 
 # Install other packages/library
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -53,6 +53,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # build
-RUN echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc
-RUN echo "cd /root/catkin_ws; catkin_make" >> /root/.bashrc
+RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc
+RUN echo "cd /root/catkin_ws; catkin build" >> /root/.bashrc
 RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
