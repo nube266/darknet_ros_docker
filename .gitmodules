@@ -1,3 +1,6 @@
 [submodule "catkin_ws/src/darknet_ros"]
 	path = catkin_ws/src/darknet_ros
 	url = https://aisl-serv6.aisl.cs.tut.ac.jp:20443/YusukeMiake/darknet_ros.git
+[submodule "catkin_ws/src/usb_cam"]
+	path = catkin_ws/src/usb_cam
+	url = https://aisl-serv6.aisl.cs.tut.ac.jp:20443/YusukeMiake/usb_cam.git

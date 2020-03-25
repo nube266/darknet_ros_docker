@@ -50,6 +50,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-kinetic-vision-opencv \
     python-opencv \
     libopencv-dev \
+    dbus \
     && rm -rf /var/lib/apt/lists/*
 
 # build
