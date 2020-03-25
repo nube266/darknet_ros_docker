@@ -10,6 +10,7 @@ services:
     runtime: nvidia
     tty: true
     shm_size: 1G
+    privileged: true
     environment:
         - DISPLAY=${DISPLAY}
         - QT_X11_NO_MITSHM=1
@@ -17,10 +18,5 @@ services:
     volumes:
         - /tmp/.X11-unix:/tmp/.X11-unix
         - ./catkin_ws:/root/catkin_ws
-
-    devices:
-        - /dev/video0:/dev/video0
-        - /dev/video1:/dev/video1
-        - /dev/video2:/dev/video2
 
     network_mode: host
