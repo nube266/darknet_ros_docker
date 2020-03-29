@@ -40,8 +40,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Download_weights
-WORKDIR  /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights/
-RUN wget http://pjreddie.com/media/files/yolov3.weights
+# WORKDIR  /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights/
+# RUN wget http://pjreddie.com/media/files/yolov3.weights
 
 # Install other packages/library
 RUN apt-get update && apt-get install -y --no-install-recommends \
