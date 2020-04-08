@@ -21,7 +21,14 @@ services:
         - NVIDIA_REQUIRE_CUDA=cuda>=9.0
 
     volumes:
+        - /home/$USER:/home/$USER
+        - /etc/group:/etc/group
+        - /etc/passwd:/etc/passwd
+        - /etc/shadow:/etc/shadow:ro
+        - /etc/sudoers.d:/etc/sudoers.d
         - /tmp/.X11-unix:/tmp/.X11-unix
         - ./catkin_ws:/root/catkin_ws
+
+    working_dir: /home/$USER"
 
     network_mode: host
