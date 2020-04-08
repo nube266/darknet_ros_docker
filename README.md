@@ -110,7 +110,14 @@
    ```bash
    docker-compose up -d
    ```
-5. dockerコンテナ内に移動して、usb_camを起動
+
+5. ディスプレイの使用許可を与える(本当は非推奨の方法)  
+   ```bash
+   # この設定はPCを再起動するたびに消える
+   xhost +local:user
+   ```
+
+6. dockerコンテナ内に移動して、usb_camを起動
    ```bash
    # 移動
    docker-compose exec darknet_ros /bin/bash
@@ -122,7 +129,7 @@
    # これを実行するとそのターミナルは操作できなくなる
    roslaunch usb_cam usb_cam.launch video_device:=/dev/video0
    ```
-6. 別のターミナルを開いて、今度はコンテナでdarknet_rosを実行
+7. 別のターミナルを開いて、今度はコンテナでdarknet_rosを実行
    ```bash
    # コンテナ内に移動
    cd darknet_ros_docker
@@ -130,3 +137,24 @@
    # darknet_rosを実行
    roslaunch darknet_ros darknet_ros_usb_cam.launch
    ```
+
+## トラブルシューティング
+### darknet_ros実行時に以下のエラーが発生してプログラムが終了する
+   ```
+   Loading weights from /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights/yolov3.weights...Done!
+   Waiting for image.
+   [darknet_ros-1] process has died [pid 1702, exit code -11, cmd /root/catkin_ws/devel/lib/darknet_ros/darknet_ros __name:=darknet_ros __log:=/root/.ros/log/399e88fe-799f-11ea-a8cc-d43b04d7f15e/darknet_ros-1.log].
+   log file: /root/.ros/log/399e88fe-799f-11ea-a8cc-d43b04d7f15e/darknet_ros-1*.log
+   ```
+   これは重みファイルweightsが正しく配置できていないことが多い  
+</br>
+
+### GUI(OpenCVのウィンドウやrvizが表示できない)
+5.をもう一回すれば解決することが多い  
+<br/>
+
+### usb_cam.launchが起動しない
+以下のことを行うと解決することが多い  
+- usbカメラがきちんと認識されているかを確認  
+   ( ls /dev/video* で確認する)  
+- video_device:=/dev/video0のvideo0の部分を変える  
