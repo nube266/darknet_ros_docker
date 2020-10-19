@@ -89,15 +89,9 @@
    ```
 
 2. 重みファイルのダウンロード  
-   サーバの以下のディレクトリにyolov3.weightsが置いてあるので
-   そちらからダウンロードして、以下のリポジトリに配置する。
-   (注：how_to_download_weights.txtは無視)
+   サーバにyolov3.weights置いてあるので、そちらからダウンロードして、以下のリポジトリに配置する。
    ```bash
-   # サーバ上の重みファイルの場所
-   smb://aisl-serv5/nfs5/share/lab_only/seminar2020/yolo/yolo_network_config/weights/yolov3.weights
-   ```
-   ```
-   重みファイルを配置する場所
+   # 重みファイルを配置する場所
    darknet_ros_docker/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
    ```
 
